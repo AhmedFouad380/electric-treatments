@@ -8,15 +8,61 @@ use App\Category;
 use App\User;
 use App\Job;
 use Exception;
- class CategoryController extends Controller
+use Yajra\DataTables\DataTables;
+
+class CategoryController extends Controller
 {
     public function index(){
 
-        $Categories = Category::OrderBy('id','desc')->paginate(10);
 
          $tree =  $this->addSub(0);
 
-        return view('Admin.Category.index',compact('Categories','tree'));
+        return view('Admin.Category.index');
+
+    }
+
+    public function datatable(Request $request)
+    {
+        $data = Category::orderBy('id', 'desc');
+        if(isset($request->name)){
+            $data->where('name','like','%'.$request->name.'%');
+        }
+        if(isset($request->sub_id) && $request->sub_id != 0){
+            $data->where('sub_id',$request->sub_id);
+        }
+        if(isset($request->type)  && $request->type != 0){
+            $data->where('type',$request->type);
+        }
+
+
+        return DataTables::of($data)
+            ->addColumn('checkbox', function ($row) {
+                $checkbox = '';
+                $checkbox .= '  <label class="checkbox checkbox-single">
+                                        <input type="checkbox" value="'.$row->id.'" class="checkable" name="check_delete[]"/>
+                                        <span></span>
+                                    </label>
+                                ';
+                return $checkbox;
+            })
+            ->addColumn('actions', function ($row) {
+                $actions = ' <a href="' . url("Edit_Categories/" . $row->id) . '" class="btn btn-success"><i class="fa fa-pencil-alt"></i>  </a>';
+                return $actions;
+
+            })
+
+            ->addColumn('subCategory', function ($row) {
+                return  $row->subCategories->name;
+
+            })
+
+            ->addColumn('categoryUnit', function ($row) {
+                return  $row->CategoryUnits->name;
+
+            })
+
+            ->rawColumns(['actions', 'checkbox','' ])
+            ->make();
 
     }
 
@@ -101,7 +147,7 @@ use Exception;
             return redirect('/resources/Categories')->with('error_message', 'Failed');
         }
 
-        return redirect()->back()->with('message', 'Success');
+        return redirect('/resources/Categories')->with('message', 'Success');
     }
 
     public function delete(Request $request)

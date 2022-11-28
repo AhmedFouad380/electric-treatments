@@ -56,37 +56,14 @@
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->
-                        <button style="margin: 6px" type="button" data-toggle="modal" data-toggle="modal" data-target="#kt_modal_4" class="btn btn-primary font-weight-bolder">
-            <span class="svg-icon svg-icon-md">
-              <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <rect x="0" y="0" width="24" height="24" />
-                  <circle fill="#000000" cx="9" cy="15" r="6" />
-                  <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-                </g>
-              </svg>
-                <!--end::Svg Icon-->
-            </span> {{__('lang.Jobs_Create')}}</button>
-                        <button  style="margin: 6px"  type="button" data-toggle="modal" data-toggle="modal" data-target="#kt_modal_5" class="btn btn-info font-weight-bolder">
-                            &nbsp;&nbsp;<i class="flaticon2-magnifier-tool"></i>
 
-                            {{__('lang.search')}}</button>
-                        <button  style="margin: 6px"  id="delete" class="btn btn-danger font-weight-bolder"><span class="svg-icon svg-icon-md"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <rect x="0" y="0" width="24" height="24"/>
-                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
-                    <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000"/>
-                </g>
-            </svg><!--end::Svg Icon--></span>
-                            {{__('lang.Jobs_Delete')}}</button>
                         <!--end::Button-->
                     </div>
                 </div>
                 <div class="card-body">
 
                     <!--begin: Datatable-->
-                    <table class="table table-bordered table-hover table-checkable mt-10" id="kt_datatable">
+                    <table class="table table-bordered table-hover table-checkable mt-10" id="users_table">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -100,55 +77,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($Job as $User)
-                            <tr>
-                                <td>
-                                    <label class="checkbox checkbox-single">
-                                        <input type="checkbox" value="{{$User->id}}" class="checkable" name="check_delete[]"/>
-                                        <span></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <div class="kt-user-card-v2">
-                                        <div class="kt-user-card-v2__details">
-                                            <span class="kt-user-card-v2__name"></span>
-                                            {{$User->name}}
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    @inject('data','App\Category')
-                                    @if($data->find($User->category_id))
-                                        {{$data->find($User->category_id)->name}}
-                                    @else
-                                        {{__('lang.Categories_UnitDelete')}}
-                                    @endif
-
-                                </td>
-                                <td>{{$User->job_num}}</td>
-                                <td>
-                                    @inject('data','App\JobType')
-                                    @if($data->find($User->job_type))
-                                        {{$data->find($User->job_type)->name}}
-                                    @else
-                                        تم حذف الوحدة
-                                    @endif
-                                </td>
-                                <td>{{$User->job_degree}}</td>
-                                <td>@if($User->job_role == 1 ) وظيفة لمدير @else وظيفة لموظف @endif  </td>
-                                <td nowrap="nowrap">
-                                    <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"   data-id="{{$User->id}}" data-original-title="{{__('lang.Jobs_Edit')}}" title="{{__('lang.Jobs_Edit')}}">
-                                        <i class="flaticon-edit icon-nm"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                     <!--end: Datatable-->
-                    {{$Job->links()}}
-                    @inject('Job','App\Job')
-                    <h3> @if(Request::segment(1) == 'ar') اجمالي الوظائف :  @else Job Count : @endif  {{$Job->count()}} </h3>
                 </div>
             </div>
             <!--end::Card-->
@@ -265,7 +196,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="get" action="/resources/Search_Job">
+                    <form method="get" >
                         <div class="col-xl-12">
                             <div class="kt-section__body">
 
@@ -333,6 +264,63 @@
     <script src="{{asset('dashboard/assets/js/pages/features/miscellaneous/sweetalert2.js')}}"></script>
     <script src="{{asset('dashboard/assets/js/pages/features/miscellaneous/dropify.min.js')}}"></script>
     <!--begin::Page scripts(used by this page) -->
+    <script type="text/javascript">
+        $(function () {
+            var table = $('#users_table').DataTable({
+                processing: true,
+                serverSide: true,
+                autoWidth: false,
+                responsive: true,
+                aaSorting: [],
+                "dom": "<'card-header border-0 p-0 pt-6'<'card-title' <'d-flex align-items-center position-relative my-1'f> r> <'card-toolbar' <'d-flex justify-content-end add_button'B> r>>  <'row'l r> <''t><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+                lengthMenu: [[10, 25, 50, 100, 250, -1], [10, 25, 50, 100, 250, "الكل"]],
+                "language": {
+                    search: '<i class="fa fa-eye" aria-hidden="true"></i>',
+                    searchPlaceholder: 'بحث سريع',
+                    "url": "{{ url('admin/assets/ar.json') }}"
+                },
+                buttons: [
+                    // {extend: 'print', className: 'btn btn-light-primary mr-1 ', text: '<i class="fa fa-print fs-2x"></i>'},
+                    // // {extend: 'pdf', className: 'btn btn-raised btn-danger', text: 'PDF'},
+                    // {extend: 'excel', className: 'btn btn-light-primary mr-1', text: '<i class="fa fa-file-excel  fs-2x"></i>'},
+                    // {extend: 'colvis', className: 'btn secondary', text: 'إظهار / إخفاء الأعمدة '}
+
+                ],
+                ajax: {
+                    url: '{{ route('Jobs-Datatable') }}',
+                    data: {
+                        @if(Request::get('name'))
+                        name:'{{Request::get('name')}}'
+                        @endif
+                            @if(Request::get('job_num'))
+                        job_num:'{{Request::get('job_num')}}'
+                        @endif
+
+                            @if(Request::get('category_id'))
+                        category_id:'{{Request::get('category_id')}}'
+                        @endif
+
+                    }
+                },
+                columns: [
+                    {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
+                    {data: 'name', name: 'name', "searchable": true, "orderable": true},
+                    {data: 'category_id', name: 'category_id', "categoryUnit": true, "orderable": true},
+                    {data: 'job_num', name: 'job_num', "searchable": true, "orderable": true},
+                    {data: 'job_type', name: 'job_type', "searchable": true, "orderable": true},
+                    {data: 'job_degree', name: 'job_degree', "searchable": true, "orderable": true},
+                    {data: 'job_role', name: 'job_role', "searchable": true, "orderable": true},
+                    {data: 'actions', name: 'actions', "searchable": true, "orderable": true},
+
+                ]
+            });
+            $.ajax({
+                url: "{{ URL::to('/buttons-Jobs')}}",
+                success: function (data) { $('.add_button').append(data); },
+                dataType: 'html'
+            });
+        });
+    </script>
 
     <script>
 

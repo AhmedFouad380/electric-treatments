@@ -6,14 +6,68 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Job;
 use App\User;
+use Yajra\DataTables\DataTables;
+
 class JobController extends Controller
 {
     public function index(){
 
-        $Job = Job::OrderBy('id','desc')->paginate(10);
-        return view('Admin.Job.index',compact('Job'));
+        return view('Admin.Job.index');
 
     }
+
+    public function datatable(Request $request)
+    {
+        $query = Job::orderBy('id', 'desc');
+        if($request->name != null ){
+            $query->where('name','like','%'.$request->name.'%');
+        }
+        if($request->job_num != null ){
+            $query->where('job_num',$request->job_num);
+        }
+        if($request->category_id != 0 ){
+            $query->where('category_id',$request->category_id);
+        }
+
+
+        return DataTables::of($query)
+            ->addColumn('checkbox', function ($row) {
+                $checkbox = '';
+                $checkbox .= '  <label class="checkbox checkbox-single">
+                                        <input type="checkbox" value="'.$row->id.'" class="checkable" name="check_delete[]"/>
+                                        <span></span>
+                                    </label>
+                                ';
+                return $checkbox;
+            })
+            ->editColumn('category_id',function ($row){
+                return $row->Category->name;
+            })
+            ->editColumn('job_type',function ($row){
+                return $row->JobType->name;
+            })
+            ->editColumn('job_role',function ($row){
+                if($row->job_role == 1){
+                    return 'وظيفة لمدير ';
+                }else{
+                    return 'وظيفة لموظف ';
+                }
+            })
+
+
+            ->addColumn('actions', function ($row) {
+                $actions = ' <a href="' . url("Edit-Jobs/" . $row->id) . '" class="btn btn-success"><i class="fa fa-pencil-alt"></i>  </a>';
+                return $actions;
+
+            })
+
+
+
+            ->rawColumns(['actions', 'checkbox','' ])
+            ->make();
+
+    }
+
     public function Search_Job(Request $request){
 
         $query = Job::OrderBy('id','desc');
@@ -51,9 +105,9 @@ class JobController extends Controller
         try {
             $data->save();
         } catch (Exception $e) {
-            return redirect('/users')->with('error_message', 'Failed');
+            return redirect('/resources/Jobs')->with('error_message', 'Failed');
         }
-        return redirect()->back()->with('message', 'Success');
+        return redirect('resources/Jobs')->with('message', 'Success');
     }
 
     public function delete(Request $request)
@@ -98,8 +152,8 @@ class JobController extends Controller
             $data->save();
 
         } catch (Exception $e) {
-            return redirect('/users')->with('error_message', 'هناك خطأ ما فى عملية الاضافة');
+            return redirect('/resources/Jobs')->with('error_message', 'هناك خطأ ما فى عملية الاضافة');
         }
-        return redirect()->back()->with('message', 'Success');
+        return redirect('resources/Jobs')->with('message', 'Success');
     }
 }

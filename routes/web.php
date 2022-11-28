@@ -134,8 +134,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('/resources/CategoriesTree', 'Admin\CategoryController@CategoriesTree');
     Route::get('/resources/Categories', 'Admin\CategoryController@index');
     Route::get('/resources/CategorySearch', 'Admin\CategoryController@CategorySearch');
-    Route::get('/Edit_Category', 'Admin\CategoryController@edit');
-
+    Route::get('/copanel/Categories-datatable', 'Admin\CategoryController@datatable')->name('CategoriesDatatable');
+    Route::get('/Edit_Categories/{id}', 'Admin\CategoryController@edit');
+    Route::get('/buttons_Categories', function (){
+        return view('Admin.Category.buttons');
+    });
     //Bounses
     Route::get('/resources/Bounses', 'Admin\BonusesController@index');
     Route::post('/Store_Bonuses', 'Admin\BonusesController@store');
@@ -199,7 +202,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     Route::get('/resources/Search_Job', 'Admin\JobController@Search_Job');
     Route::get('/resources/Jobs', 'Admin\JobController@index');
-    Route::get('/Edit_Job', 'Admin\JobController@edit');
+    Route::get('/Jobs-datatable', 'Admin\JobController@datatable')->name('Jobs-Datatable');
+    Route::get('/Edit-Jobs/{id}', 'Admin\JobController@edit');
+    Route::get('/buttons-Jobs', function (){
+        return view('Admin.Job.buttons');
+    });
+
+
     Route::post('/Store_Job', 'Admin\JobController@store');
     Route::get('/Delete_Job', 'Admin\JobController@delete');
     Route::post('/Update_Job', 'Admin\JobController@update');
