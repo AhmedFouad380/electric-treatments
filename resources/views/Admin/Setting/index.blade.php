@@ -125,7 +125,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <div class="image-input image-input-empty image-input-outline" id="kt_image_1" style="background-image: url(@if ($Setting->logo == Null ){{asset('dashboard/assets/media/users/blank.png')}} @else {{asset('Upload')}}/{{$Setting->logo}} @endif)">
                                                 <div class="image-input-wrapper"></div>
-                                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('lang.Change_photo')}}">
+                                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('lang.change_image')}}">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                                     <input type="file" name="logo" accept=".png, .jpg, .jpeg" />
                                                     <input type="hidden" name="logo_remove" />
@@ -144,7 +144,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <div class="image-input image-input-empty image-input-outline" id="kt_image_2" style="background-image: url(@if ($Setting->company_seal == Null ){{asset('dashboard/assets/media/users/blank.png')}} @else {{asset('Upload')}}/{{$Setting->company_seal}} @endif)">
                                                 <div class="image-input-wrapper"></div>
-                                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('lang.Change_photo')}}">
+                                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('lang.change_image')}}">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                                     <input type="file" name="seal" accept=".png, .jpg, .jpeg" />
                                                     <input type="hidden" name="seal_remove" />
@@ -164,7 +164,7 @@
                                         <div class="col-lg-9 col-xl-6">
                                             <div class="image-input image-input-empty image-input-outline" id="kt_image_3" style="background-image: url(@if ($Setting->signature == Null ){{asset('dashboard/assets/media/users/blank.png')}} @else {{asset('Upload')}}/{{$Setting->signature}} @endif)">
                                                 <div class="image-input-wrapper"></div>
-                                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('lang.Change_photo')}}">
+                                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('lang.change_image')}}">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                                     <input type="file" name="signature" accept=".png, .jpg, .jpeg" />
                                                     <input type="hidden" name="signature_remove" />
