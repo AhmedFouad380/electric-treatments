@@ -14,13 +14,99 @@ use App\InboxExplan;
 use PDF;
 use \Milon\Barcode\DNS1D;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Yajra\DataTables\DataTables;
 
 class InboxController extends Controller
 {
 
     public function index(){
-            $data = Inbox::OrderBy('created_at','desc')->where('reciver_id',Auth::user()->id)->where('is_signature',null)->where('is_archive_reciver',null)->get();
-        return view('Admin.inbox.inbox',compact('data'));
+//            $data = Inbox::OrderBy('created_at','desc')->where('reciver_id',Auth::user()->id)->where('is_signature',null)->where('is_archive_reciver',null)->get();
+        return view('Admin.inbox.inbox');
+    }
+
+    public function datatable(Request $request)
+    {
+        $query = Inbox::orderBy('id', 'desc');
+        if($request->pageType == 'outbox'){
+            $query->where('sender_id',Auth::user()->id)->where('is_archive_sender',null);
+        }elseif($request->pageType == 'inbox'){
+            $query->where('reciver_id',Auth::user()->id)->where('is_signature',null)->where('is_archive_reciver',null);
+        }elseif($request->pageType == 'archiveinbox'){
+
+            $query->where('reciver_id',Auth::user()->id)->where('is_signature',null)->where('is_archive_reciver',1);
+        }
+
+
+
+        return DataTables::of($query)
+            ->addColumn('checkbox', function ($row) {
+                $checkbox = '';
+                $checkbox .= '  <label class="checkbox checkbox-single">
+                                        <input type="checkbox" value="'.$row->id.'" class="checkable" name="check_delete[]"/>
+                                        <span></span>
+                                    </label>
+                                ';
+                return $checkbox;
+            })
+            ->editColumn('letter',function ($row){
+                if(isset($row->letter)){
+                  return '  <span class="svg-icon svg-icon-warning svg-icon-3x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Mail.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <rect x="0" y="0" width="24" height="24"/>
+                              <path d="M5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z" fill="#000000"/>
+                          </g>
+                      </svg>
+                    </span>';
+                }
+            })
+            ->addColumn('InboxAttachment',function ($row){
+                return $row->InboxAttachment->count();
+            })
+            ->editColumn('sender_id',function ($row){
+                return $row->Sender->name;
+            })
+            ->editColumn('reciver_id',function ($row){
+                return $row->Reciver->name;
+            })
+            ->editColumn('title',function ($row){
+               if( $row->type == 2) {
+                   $action = ' بريد خارجي : ';
+                   $action .= $row->title;
+               }else {
+                   $action = $row->title;
+               }
+                   return $action;
+            })
+
+
+            ->AddColumn('hijri_date',function ($row){
+                return \Carbon\Carbon::parse($this->getHijriDate($row->date))->format('Y-m-d');
+            })
+
+
+            ->addColumn('actions', function ($row) {
+                if($row->type == 1) {
+                    $actions = '  <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/inbox_details/'.$row->id.'
+                    " data-original-title="Edit" title="View">
+                                            <i class="flaticon-eye icon-nm"></i>
+                                        </a>';
+                }elseif($row->type == 2){
+               $actions='<a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/Outbound_details/'.$row->id.'" data-original-title="Edit" title="View">
+                                                <i class="flaticon-eye icon-nm"></i>
+                                            </a>';
+                }elseif($row->type == 0){
+               $actions = ' <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/inbox_details/'.$row->id.'" data-original-title="Edit" title="View">
+                                                <i class="flaticon-eye icon-nm"></i>
+                                            </a>';
+                }
+                return $actions;
+
+            })
+
+
+            ->rawColumns(['actions', 'checkbox','letter' ])
+            ->make();
+
     }
 
     public function Letter($id){
@@ -118,8 +204,8 @@ class InboxController extends Controller
     }
 
     public function archiveinbox(){
-        $data = Inbox::where('reciver_id',Auth::user()->id)->where('is_signature',null)->where('is_archive_reciver',1)->get();
-        return view('Admin.inbox.archive',compact('data'));
+//        $data = Inbox::where('reciver_id',Auth::user()->id)->where('is_signature',null)->where('is_archive_reciver',1)->get();
+        return view('Admin.inbox.archive');
     }
     public function archiveinboxSearch(Request $request){
         $query = DB::table('inboxes')->orderBy('created_at','desc');
@@ -168,7 +254,7 @@ class InboxController extends Controller
 if($data->reciver_id == Auth::user()->id){
             $data->is_read=1;
             $data->save();
-            
+
         }
         return view('Admin.inbox.inbox_details',compact('data'));
 
@@ -179,7 +265,7 @@ if($data->reciver_id == Auth::user()->id){
         if($data->reciver_id == Auth::user()->id){
             $data->is_read=1;
             $data->save();
-            
+
         }
         return view('Admin.inbox.Outbound_details',compact('data'));
 
@@ -861,6 +947,11 @@ if($data->reciver_id == Auth::user()->id){
         }
                 return redirect('transactions/inbox')->with('message', 'Success');
 
+    }
+
+    public function getHijriDate($value){
+        $date = \GeniusTS\HijriDate\Hijri::convertToHijri($value);
+        return $date;
     }
 
 }

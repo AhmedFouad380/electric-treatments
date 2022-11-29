@@ -64,31 +64,31 @@
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->
-                        <button  style="margin: 6px"  type="button" data-toggle="modal" data-toggle="modal" data-target="#kt_modal_5" class="btn btn-info font-weight-bolder">
-                            &nbsp;&nbsp;<i class="flaticon2-magnifier-tool"></i>
+{{--                        <button  style="margin: 6px"  type="button" data-toggle="modal" data-toggle="modal" data-target="#kt_modal_5" class="btn btn-info font-weight-bolder">--}}
+{{--                            &nbsp;&nbsp;<i class="flaticon2-magnifier-tool"></i>--}}
 
-                            {{__('lang.search')}}</button>
-                        <button type="button" data-toggle="modal" data-toggle="modal" data-target="#kt_modal_4" class="btn btn-primary font-weight-bolder">
-            <span class="svg-icon svg-icon-md">
-              <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <rect x="0" y="0" width="24" height="24" />
-                  <circle fill="#000000" cx="9" cy="15" r="6" />
-                  <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-                </g>
-              </svg>
-                <!--end::Svg Icon-->
-            </span> {{__('lang.Users_Create')}}</button>
-                        &nbsp;&nbsp;
-                        <button id="delete" class="btn btn-danger font-weight-bolder"><span class="svg-icon svg-icon-md"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <rect x="0" y="0" width="24" height="24"/>
-                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
-                    <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000"/>
-                </g>
-            </svg><!--end::Svg Icon--></span>
-                            {{__('lang.Users_Delete')}}</button>
+{{--                            {{__('lang.search')}}</button>--}}
+{{--                        <button type="button" data-toggle="modal" data-toggle="modal" data-target="#kt_modal_4" class="btn btn-primary font-weight-bolder">--}}
+{{--            <span class="svg-icon svg-icon-md">--}}
+{{--              <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->--}}
+{{--              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">--}}
+{{--                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">--}}
+{{--                  <rect x="0" y="0" width="24" height="24" />--}}
+{{--                  <circle fill="#000000" cx="9" cy="15" r="6" />--}}
+{{--                  <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />--}}
+{{--                </g>--}}
+{{--              </svg>--}}
+{{--                <!--end::Svg Icon-->--}}
+{{--            </span> {{__('lang.Users_Create')}}</button>--}}
+{{--                        &nbsp;&nbsp;--}}
+{{--                        <button id="delete" class="btn btn-danger font-weight-bolder"><span class="svg-icon svg-icon-md"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">--}}
+{{--                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">--}}
+{{--                    <rect x="0" y="0" width="24" height="24"/>--}}
+{{--                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>--}}
+{{--                    <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000"/>--}}
+{{--                </g>--}}
+{{--            </svg><!--end::Svg Icon--></span>--}}
+{{--                            {{__('lang.Users_Delete')}}</button>--}}
                         <!--end::Button-->
                     </div>
                 </div>
@@ -105,80 +105,16 @@
                             <th>{{__('lang.Users_Mobile')}} </th>
                             <th>{{__('lang.Users_Nationality')}} </th>
                             <th>{{__('lang.Users_main')}} </th>
-                            <th>{{__('lang.Users_active')}} </th>
+{{--                            <th>{{__('lang.Users_active')}} </th>--}}
                             <th> {{__('lang.Users_Edit')}}  </th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($Users as $User)
-                            <tr>
-                                <td>
-                                    <label class="checkbox checkbox-single">
-                                        <input type="checkbox" value="{{$User->id}}" class="checkable" name="check_delete[]"/>
-                                        <span></span>
-                                    </label>
-                                </td>
-                                <td class="center" >
-                                        @if($User->img)
-                                            <div class="kt-user-card-v2__pic">
-                                                <img src="{{asset('Upload/User/'.$User->img)}}" class="m-img-rounded kt-marginless img-thumbnail" width="75px" alt="photo">
-                                            </div>
-                                        @endif
-
-                                </td>
-                                <td>
-                                    <div class="kt-user-card-v2">
-                                        <a  class="kt-user-card-v2__email kt-link" href="/viewProfile/{{$User->id}}">
-                                            {{$User->name}}
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>{{$User->email}}</td>
-                                <td>{{$User->phone}}</td>
-                                @inject('Nationality','App\Nationality')
-                                <td>@if($Nationality->find($User->country_id)) {{$Nationality->find($User->country_id)->name}} @else   تم حذف الجنسية @endif</td>
-                                @inject('Job','App\Job')
-                                <td>
-                                    <span class="label font-weight-bold label-lg label-light-primary label-inline">@if($Job->find($User->mainJob_id)) {{$Job->find($User->mainJob_id)->name}} @else   تم حذف الوظيفة @endif</span>
-                                </td>
-
-
-                                <td>
-                    <span class="switch switch-sm switchery-demo">
-                        <label>
-                         <input type="checkbox" class="switchery-demo" data-id="{{$User->id}}" @if($User->isActive == 1) checked="checked" @endif />
-                         <span></span>
-                        </label>
-                       </span>
-                                </td>
-                                <td nowrap="nowrap">
-                    <span class="dropdown">
-                        <a href="#" class="btn btn-warning  btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
-                          <i class="la la-ellipsis-h"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item " href="/resources/UserAttachment/{{$User->id}}"><i class="la la-file"></i> {{__('lang.Users_attachments')}} </a>
-                            <a class="dropdown-item edit-notation"  data-id="{{$User->id}}" ><i class="la la-print"></i> {{__('lang.Users_visa')}}</a>
-                            <a class="dropdown-item edit-inboxGroup"  data-id="{{$User->id}}" ><i class="la la-inbox"></i>  {{__('lang.Users_groups')}}</a>
-                        </div>
-                    </span>
-                                    <a  class="btn btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"   data-id="{{$User->id}}" data-original-title="{{__('lang.Users_Edit')}}" title="{{__('lang.Users_Edit')}}">
-                                        <i class="fa fa-edit icon-nm"></i>
-                                    </a>
-{{--                            add btn to open empshifts modal                   --}}
-                                    <a  class="btn btn-outline-primary btn-sm btn-clean btn-icon btn-icon-md edit-Shift"   data-id="{{$User->id}}" data-original-title="{{__('lang.Users_Shifts')}}" title="{{__('lang.Users_Shifts')}}">
-                                        <i class="fa fa-location-arrow"></i>
-                                    </a>
-
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                     <!--end: Datatable-->
                 </div>
 
-                <h3>اجمالي الموظفيين : @inject('AllUsers','App\User') {{$AllUsers->count()}} </h3>
             </div>
             <!--end::Card-->
         </div>
@@ -195,7 +131,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="get" action="/resources/Search_User">
+                    <form method="get">
                         <div class="col-xl-12">
                             <div class="kt-section__body">
 
@@ -699,10 +635,82 @@
     <script src="{{asset('hijri/js/moment-with-locales.js')}}"></script>
     <script src="{{asset('hijri/js/moment-hijri.js')}}"></script>
     <script src="{{asset('hijri/js/bootstrap-hijri-datetimepicker.js')}}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var table = $('#kt_tdata').DataTable({
+                processing: true,
+                serverSide: true,
+                autoWidth: false,
+                responsive: true,
+                aaSorting: [],
+                "dom": "<'card-header border-0 p-0 pt-6'<'card-title' <'d-flex align-items-center position-relative my-1'f> r> <'card-toolbar' <'d-flex justify-content-end add_button'B> r>>  <'row'l r> <''t><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+                lengthMenu: [[10, 25, 50, 100, 250, -1], [10, 25, 50, 100, 250, "الكل"]],
+                "language": {
+                    search: '<i class="fa fa-eye" aria-hidden="true"></i>',
+                    searchPlaceholder: 'بحث سريع',
+                    "url": "{{ url('admin/assets/ar.json') }}"
+                },
+                buttons: [
+                    // {extend: 'print', className: 'btn btn-light-primary mr-1 ', text: '<i class="fa fa-print fs-2x"></i>'},
+                    // {extend: 'pdf', className: 'btn btn-raised btn-danger', text: 'PDF'},
+                    // {extend: 'excel', className: 'btn btn-light-primary mr-1', text: '<i class="fa fa-file-excel  fs-2x"></i>'},
+                    // {extend: 'colvis', className: 'btn secondary', text: 'إظهار / إخفاء الأعمدة '}
 
+                ],
+                @if( Request::segment(1) == "ar")
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
+                },
+                @endif
+                ajax: {
+                    url: '{{ route('User-Datatable') }}',
+                    data: {
+                        @if(Request::get('name'))
+                        name:'{{Request::get('name')}}'
+                        @endif
+                            @if(Request::get('job_num'))
+                        job_num:'{{Request::get('job_num')}}'
+                        @endif
+                            @if(Request::get('category_id'))
+                        category_id:'{{Request::get('category_id')}}'
+                        @endif
+                            @if(Request::get('mainJob_id'))
+                        mainJob_id:'{{Request::get('mainJob_id')}}'
+                        @endif
+
+                            @if(Request::get('phone'))
+                        phone:'{{Request::get('phone')}}'
+                        @endif
+
+                            @if(Request::get('type'))
+                        type:'{{Request::get('type')}}'
+                        @endif
+
+                    }
+                },
+                columns: [
+                    {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
+                    {data: 'img', name: 'img', "searchable": false, "orderable": true},
+                    {data: 'name', name: 'name', "searchable": true, "orderable": true},
+                    {data: 'email', name: 'email', "searchable": true, "orderable": true},
+                    {data: 'phone', name: 'phone', "searchable": true, "orderable": true},
+                    {data: 'country_id', name: 'country_id', "searchable": true, "orderable": true},
+                    {data: 'mainJob_id', name: 'mainJob_id', "searchable": true, "orderable": true},
+                    {data: 'actions', name: 'actions', "searchable": true, "orderable": true},
+
+                ]
+            });
+            $.ajax({
+                url: "{{ URL::to('/buttons-User')}}",
+                success: function (data) { $('.add_button').append(data); },
+                dataType: 'html'
+            });
+        });
+    </script>
  <script>
  //DataTable
- 	var table = $('#kt_tdata').DataTable({
+
+ 	var table = $('#').DataTable({
  			dom: 'Bfrtip',
  			"ordering":false,
  			  buttons: [
@@ -775,58 +783,58 @@
          placeholder: ""
         });
         //Delete Row
-        $("body").on("click", "#delete", function () {
-            var dataList = [];
-            dataList = $("#kt_datatable input:checkbox:checked").map(function(){
-                return $(this).val();
-            }).get();
+        {{--$("body").on("click", "#delete", function () {--}}
+        {{--    var dataList = [];--}}
+        {{--    dataList = $("#kt_datatable input:checkbox:checked").map(function(){--}}
+        {{--        return $(this).val();--}}
+        {{--    }).get();--}}
 
-            if(dataList.length >0){
-                Swal.fire({
-                    title: "{{__('lang.warrning')}}",
-                    text: "",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#f64e60",
-                    confirmButtonText: "{{__('lang.btn_yes')}}",
-                    cancelButtonText: "{{__('lang.btn_no')}}",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                }).then(function (result) {
-                    if (result.value) {
-                        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url:'{{url("Delete_User")}}',
-                            type:"get",
-                            data:{'id':dataList,_token: CSRF_TOKEN},
-                            dataType:"JSON",
-                            success: function (data) {
-                                if(data.message == "Success")
-                                {
-                                    $("#kt_datatable .selected").hide();
-                                    @if( Request::segment(1) == "ar")
-                                    $('#delete').text('حذف 0 سجل');
-                                    @else
-                                    $('#delete').text('Delete 0 row');
-                                    @endif
-                                    Swal.fire("{{__('lang.Success')}}", "{{__('lang.Success_text')}}", "success");
-                                    location.reload();
-                                }else{
-                                    Swal.fire("{{__('lang.Sorry')}}", "{{__('lang.Message_Fail_Delete')}}", "error");
-                                }
-                            },
-                            fail: function(xhrerrorThrown){
-                                Swal.fire("{{__('lang.Sorry')}}", "{{__('lang.Message_Fail_Delete')}}", "error");
-                            }
-                        });
-                        // result.dismiss can be 'cancel', 'overlay',
-                        // 'close', and 'timer'
-                    } else if (result.dismiss === 'cancel') {
-                        Swal.fire("{{__('lang.Cancelled')}}", "{{__('lang.Message_Cancelled_Delete')}}", "error");
-                    }
-                });
-            }
-        });
+        {{--    if(dataList.length >0){--}}
+        {{--        Swal.fire({--}}
+        {{--            title: "{{__('lang.warrning')}}",--}}
+        {{--            text: "",--}}
+        {{--            icon: "warning",--}}
+        {{--            showCancelButton: true,--}}
+        {{--            confirmButtonColor: "#f64e60",--}}
+        {{--            confirmButtonText: "{{__('lang.btn_yes')}}",--}}
+        {{--            cancelButtonText: "{{__('lang.btn_no')}}",--}}
+        {{--            closeOnConfirm: false,--}}
+        {{--            closeOnCancel: false--}}
+        {{--        }).then(function (result) {--}}
+        {{--            if (result.value) {--}}
+        {{--                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');--}}
+        {{--                $.ajax({--}}
+        {{--                    url:'{{url("Delete_User")}}',--}}
+        {{--                    type:"get",--}}
+        {{--                    data:{'id':dataList,_token: CSRF_TOKEN},--}}
+        {{--                    dataType:"JSON",--}}
+        {{--                    success: function (data) {--}}
+        {{--                        if(data.message == "Success")--}}
+        {{--                        {--}}
+        {{--                            $("#kt_datatable .selected").hide();--}}
+        {{--                            @if( Request::segment(1) == "ar")--}}
+        {{--                            $('#delete').text('حذف 0 سجل');--}}
+        {{--                            @else--}}
+        {{--                            $('#delete').text('Delete 0 row');--}}
+        {{--                            @endif--}}
+        {{--                            Swal.fire("{{__('lang.Success')}}", "{{__('lang.Success_text')}}", "success");--}}
+        {{--                            location.reload();--}}
+        {{--                        }else{--}}
+        {{--                            Swal.fire("{{__('lang.Sorry')}}", "{{__('lang.Message_Fail_Delete')}}", "error");--}}
+        {{--                        }--}}
+        {{--                    },--}}
+        {{--                    fail: function(xhrerrorThrown){--}}
+        {{--                        Swal.fire("{{__('lang.Sorry')}}", "{{__('lang.Message_Fail_Delete')}}", "error");--}}
+        {{--                    }--}}
+        {{--                });--}}
+        {{--                // result.dismiss can be 'cancel', 'overlay',--}}
+        {{--                // 'close', and 'timer'--}}
+        {{--            } else if (result.dismiss === 'cancel') {--}}
+        {{--                Swal.fire("{{__('lang.Cancelled')}}", "{{__('lang.Message_Cancelled_Delete')}}", "error");--}}
+        {{--            }--}}
+        {{--        });--}}
+        {{--    }--}}
+        {{--});--}}
 
         $(document).ready(function() {
             // Basic

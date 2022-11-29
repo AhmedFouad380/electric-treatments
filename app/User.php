@@ -37,14 +37,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function getImgAttribute($image)
+    {
+        if (!empty($image)) {
+            return asset('Upload/User') . '/' . $image;
+        }
+        return null;
+
+    }
+
+
     public function Nationality()
     {
-        return $this->hasOne('App\Nationality', 'country_id');
+        return $this->belongsTo('App\Nationality', 'country_id');
     }
 
     public function Mainjob()
     {
-        return $this->hasOne('App\job', 'mainJob_id');
+        return $this->belongsTo('App\job', 'mainJob_id');
     }
 
     public function Bonuses()

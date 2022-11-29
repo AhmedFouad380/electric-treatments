@@ -89,6 +89,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('/resources/Users', 'Admin\UserController@index');
     Route::get('/resources/getUsersWhereDate/{id}', 'Admin\UserController@getUsersWhereDate');
     Route::get('/resources/getUsersWhereType/{id}', 'Admin\UserController@getUsersWhereType');
+    Route::get('/User-datatable', 'Admin\UserController@datatable')->name('User-Datatable');
+    Route::get('/Edit-User/{id}', 'Admin\UserController@edit');
+    Route::get('/buttons-User', function (){
+        return view('Admin.User.buttons');
+    });
 
     Route::get('/resources/Search_User', 'Admin\UserController@Search_User');
 
@@ -353,6 +358,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
     Route::get('/transactions/outbox', 'Admin\InboxController@outbox');
+    Route::get('/User-outbox', 'Admin\InboxController@datatable')->name('outbox-Datatable');
+
     Route::get('/transactions/outBoxSearch', 'Admin\InboxController@outBoxSearch');
 
     Route::get('/transactions/archiveinbox', 'Admin\InboxController@archiveinbox');

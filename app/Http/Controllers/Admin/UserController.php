@@ -2,23 +2,82 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Log;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $Users = User::OrderBy('id', 'desc')->get();
-        return view('Admin.User.index', compact('Users'));
+        return view('Admin.User.index', );
+
+    }
+    public function datatable(Request $request)
+    {
+        $query = User::orderBy('id', 'desc');
+        if ($request->name != null) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+        if ($request->job_num != null) {
+            $query->where('job_num', $request->job_num);
+        }
+        if ($request->type != 0) {
+            $query->where('type', $request->type);
+        }
+        if ($request->phone != null) {
+            $query->where('phone', $request->phone);
+        }
+        if ($request->mainJob_id != 0) {
+            $query->where('mainJob_id', $request->mainJob_id);
+        }
+        if ($request->category_id != 0) {
+            $query->where('category_id', $request->category_id);
+        }
+
+
+        return DataTables::of($query)
+            ->addColumn('checkbox', function ($row) {
+                $checkbox = '';
+                $checkbox .= '  <label class="checkbox checkbox-single">
+                                        <input type="checkbox" value="'.$row->id.'" class="checkable" name="check_delete[]"/>
+                                        <span></span>
+                                    </label>
+                                ';
+                return $checkbox;
+            })
+            ->editColumn('img',function ($row){
+                if($row->img){
+                return '<img width="100px" src="'.$row->img.'">';
+                }
+            })
+            ->editColumn('mainJob_id',function ($row){
+                return $row->Mainjob->name;
+            })
+            ->editColumn('country_id',function ($row){
+                return $row->Nationality->name;
+            })
+
+
+            ->addColumn('actions', function ($row) {
+                $actions = ' <a href="' . url("Edit_User/" . $row->id) . '" class="btn btn-success"><i class="fa fa-pencil-alt"></i>  </a>';
+                return $actions;
+
+            })
+
+
+            ->rawColumns(['actions', 'checkbox','img' ])
+            ->make();
 
     }
 
-  public function admin_index()
+
+    public function admin_index()
     {
         $data = User::
         selectRaw('year(start_job_date) year, count(id) data')

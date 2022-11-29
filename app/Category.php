@@ -12,7 +12,14 @@ class Category extends Model
     }
 
     public function subCategories(){
-        return $this->belongsTo('App\Category' ,'sub_id');
+        return $this->belongsTo('App\Category' ,'sub_id')->withDefault([
+           'name'=> 'قسم رئيسي '
+        ]);
     }
 
-}
+    public function CategoryUnits()
+    {
+        return $this->belongsTo('App\CategoryUnits', 'type');
+
+    }
+    }

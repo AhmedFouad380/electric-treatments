@@ -316,51 +316,11 @@
                           <th>{{__('lang.Topic')}}</th>
                           <th>{{__('lang.Guidance')}}</th>
                           <th>{{__('lang.Date')}}</th>
-                          <th>{{__('lang.time')}}</th>
+{{--                          <th>{{__('lang.time')}}</th>--}}
                           <th>{{__('lang.Details')}} </th>
                       </tr>
                       </thead>
                       <tbody>
-                      @inject('user','App\User')
-                      @inject('InboxAttachment','App\InboxAttachment')
-
-                      @foreach($data as $inbox)
-                          <tr>
-                              <td>11 </td>
-                              <td>
-                    <span class="svg-icon svg-icon-warning svg-icon-3x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Mail.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                              <rect x="0" y="0" width="24" height="24"/>
-                              <path d="M5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z" fill="#000000"/>
-                          </g>
-                      </svg>
-                    </span>
-                              </td>
-                              <td> {{$InboxAttachment->where('inbox_id',$inbox->id)->count()}} </td>
-                              <td> {{$inbox->id}} </td>
-                              <td> @if($user->find($inbox->sender_id)) {{$user->find($inbox->sender_id)->name}}  @else   تم حضف الموظف @endif </td>
-                              <td> @if($inbox->type == 2) بريد خارجي : @endif {{$inbox->title}} </td>
-                              <td> @if($user->find($inbox->reciver_id)) {{$user->find($inbox->reciver_id)->name}}  @else   تم حضف الموظف @endif </td>
-                              <td style="width:100px !important;">{{ Carbon\Carbon::parse($inbox->created_at)->format('Y-m-d')}}</td>
-                              <td style="width:100px !important;">{{Carbon\Carbon::parse($inbox->created_at)->format('H:m:s') }}</td>
-                              <td nowrap="nowrap">
-                                  @if($inbox->type == 1)
-                                      <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/inbox_details/{{$inbox->id}}" data-original-title="Edit" title="View">
-                                          <i class="flaticon-eye icon-nm"></i>
-                                      </a>
-                                  @elseif($inbox->type == 2)
-                                      <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/Outbound_details/{{$inbox->id}}" data-original-title="Edit" title="View">
-                                          <i class="flaticon-eye icon-nm"></i>
-                                      </a>
-                                  @elseif($inbox->type == 0)
-                                      <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/inbox_details/{{$inbox->id}}" data-original-title="Edit" title="View">
-                                          <i class="flaticon-eye icon-nm"></i>
-                                      </a>
-                                  @endif
-                              </td>
-                          </tr>
-                      @endforeach
-
 
                       </tbody>
                   </table>
@@ -395,16 +355,62 @@
 <script src="{{asset('dashboard/assets/js/pages/features/miscellaneous/dropify.min.js')}}"></script>
 <script src="{{asset('dashboard/assets/js/pages/custom/inbox/inbox.js')}}"></script>
 <!--begin::Page scripts(used by this page) -->
+<script type="text/javascript">
+    $(function () {
+        var table = $('#datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            autoWidth: false,
+            responsive: true,
+
+            aaSorting: [],
+            "dom": "<'card-header border-0 p-0 pt-6'<'card-title' <'d-flex align-items-center position-relative my-1'f> r> <'card-toolbar' <'d-flex justify-content-end add_button'B> r>>  <'row'l r> <''t><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+            lengthMenu: [[10, 25, 50, 100, 250, -1], [10, 25, 50, 100, 250, "الكل"]],
+            "language": {
+                search: '<i class="fa fa-eye" aria-hidden="true"></i>',
+                searchPlaceholder: 'بحث سريع',
+                "url": "{{ url('admin/assets/ar.json') }}"
+            },
+            buttons: [
+                // {extend: 'print', className: 'btn btn-light-primary mr-1 ', text: '<i class="fa fa-print fs-2x"></i>'},
+                // {extend: 'pdf', className: 'btn btn-raised btn-danger', text: 'PDF'},
+                // {extend: 'excel', className: 'btn btn-light-primary mr-1', text: '<i class="fa fa-file-excel  fs-2x"></i>'},
+                // {extend: 'colvis', className: 'btn secondary', text: 'إظهار / إخفاء الأعمدة '}
+
+            ],
+            @if( Request::segment(1) == "ar")
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
+            },
+            @endif
+            ajax: {
+                url: '{{ route('outbox-Datatable') }}',
+                data: {
+                    pageType:'archiveinbox'
+
+
+                }
+            },
+            columns: [
+                {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
+                {data: 'letter', name: 'letter', "searchable": false, "orderable": true},
+                {data: 'InboxAttachment', name: 'InboxAttachment', "searchable": false, "orderable": true},
+                {data: 'id', name: 'id', "searchable": true, "orderable": true},
+                {data: 'sender_id', name: 'sender_id', "searchable": false, "orderable": true},
+                {data: 'title', name: 'title', "searchable": true, "orderable": true},
+                {data: 'reciver_id', name: 'reciver_id', "searchable": false, "orderable": true},
+                {data: 'hijri_date', name: 'hijri_date', "searchable": false, "orderable": true},
+                {data: 'date', name: 'date', "searchable": false, "orderable": true},
+                {data: 'actions', name: 'actions', "searchable": false, "orderable": true},
+
+            ]
+        });
+
+    });
+</script>
 
 <script>
-    $('#datatable').dataTable( {
-        "searching": true,
-        @if( Request::segment(1) == "ar")
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
-        }
-        @endif
-    } );
+  
     $("body").on("click", "#delete", function () {
         var dataList = [];
         dataList = $("#kt_datatable input:checkbox:checked").map(function(){
