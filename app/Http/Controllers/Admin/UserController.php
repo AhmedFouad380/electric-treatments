@@ -18,14 +18,14 @@ class UserController extends Controller
 
     }
 
-  public function admin_index()
+    public function admin_index()
     {
         $data = User::
         selectRaw('year(start_job_date) year, count(id) data')
             ->groupBy('year')
             ->orderBy('year')
             ->get();
-        return view('Admin.index',compact('data'));
+        return view('Admin.index', compact('data'));
 
     }
 
@@ -94,13 +94,6 @@ class UserController extends Controller
         }
         $Users = $query->get();
         return view('Admin.User.index', compact('Users'));
-
-    }
-
-    public function Profile()
-    {
-        $User = User::find(Auth::user()->id);
-        return view('Admin.User.profile', compact('User'));
 
     }
 
@@ -420,20 +413,22 @@ class UserController extends Controller
         return redirect('/login');
     }
 
+    public function Profile()
+    {
+        $User = User::find(Auth::user()->id);
+        return view('Admin.User.profile', compact('User'));
+    }
+
     public function Update_Profile(Request $request)
     {
-
         $this->validate(request(), [
 
         ]);
-
-
-        $User = User::find($request->id);
+        $User = User::find(Auth::user()->id);
         $User->name = $request->name;
         $User->en_name = $request->en_name;
         $User->phone = $request->phone;
         $User->fpuid = $request->fpuid;
-
         if ($request->password) {
             $User->password = Hash::make($request->password);
         }
@@ -441,13 +436,9 @@ class UserController extends Controller
             $name = time() . '.' . $file->getClientOriginalName();
             $file->move('Upload/User', $name);
             $User->img = $name;
-
         }
-
-
         try {
             $User->save();
-
         } catch (\Exception $e) {
             return back()->with('error_message', 'هناك خطأ ما فى عملية الاضافة');
         }

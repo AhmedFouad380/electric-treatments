@@ -12,10 +12,10 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Page Custom Styles(used by this page)-->
-		
+
 		<!--end::Page Custom Styles-->
 		<link href="{{asset('dashboard/assets/css/pages/login/login-4.rtl.css')}}" rel="stylesheet" type="text/css" />
-			
+
         <link href="{{asset('dashboard/assets/plugins/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('dashboard/assets/plugins/custom/prismjs/prismjs.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('dashboard/assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
@@ -61,14 +61,14 @@
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror 
+                                    @enderror
                                 </div>
 								<!--end::Form group-->
 								<!--begin::Form group-->
 								<div class="form-group">
 									<div class="d-flex justify-content-between mt-n5">
 										<label class="font-size-h6 font-weight-bolder text-dark pt-5"> {{__('lang.password')}} </label>
-										<a href="#" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">هل نسيت كلمة المرور ؟</a>
+{{--										<a href="#" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">هل نسيت كلمة المرور ؟</a>--}}
 									</div>
 									<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0 @error('password') is-invalid @enderror" id="password" type="password" name="password" placeholder=" {{__('lang.password')}} " required autocomplete="current-password" />
                                     @error('password')

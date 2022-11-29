@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $Setting = Setting::find(1);
-        return view('Admin.Setting.index',compact('Setting'));
+        return view('Admin.Setting.index', compact('Setting'));
 
     }
 
@@ -19,7 +20,7 @@ class SettingController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate(request(),[
+        $this->validate(request(), [
             'ar_company_name' => 'required|string',
             'en_company_name' => 'required|string',
             'ministry_name' => 'required|string',
@@ -30,32 +31,32 @@ class SettingController extends Controller
             'signature' => 'image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
-        $Setting=new Setting;
+        $Setting = new Setting;
         $Setting->ar_company_name = $request->ar_company_name;
         $Setting->en_company_name = $request->en_company_name;
-        $Setting->ministry_name=$request->ministry_name;
-        $Setting->directorate_name=$request->directorate_name;
-        $Setting->date_type=$request->date_type;
-        $Setting->it_name=$request->it_name;
+        $Setting->ministry_name = $request->ministry_name;
+        $Setting->directorate_name = $request->directorate_name;
+        $Setting->date_type = $request->date_type;
+        $Setting->it_name = $request->it_name;
 
-        if($file1=$request->file('logo')){
-            $name='img' .time() . '.' .$file1->getClientOriginalExtension();
+        if ($file1 = $request->file('logo')) {
+            $name = 'img' . time() . '.' . $file1->getClientOriginalExtension();
             $file1->move(public_path('Upload'), $name);
-            $Setting->logo=$name;
+            $Setting->logo = $name;
 
         }
 
-        if($file2=$request->file('seal')){
-            $name='img' .time() . '.' .$file2->getClientOriginalExtension();
+        if ($file2 = $request->file('seal')) {
+            $name = 'img' . time() . '.' . $file2->getClientOriginalExtension();
             $file2->move(public_path('Upload'), $name);
-            $Setting->company_seal=$name;
+            $Setting->company_seal = $name;
 
         }
 
-        if($file3=$request->file('signature')){
-            $name='img' .time() . '.' .$file3->getClientOriginalExtension();
+        if ($file3 = $request->file('signature')) {
+            $name = 'img' . time() . '.' . $file3->getClientOriginalExtension();
             $file3->move(public_path('Upload'), $name);
-            $Setting->signature=$name;
+            $Setting->signature = $name;
 
         }
 
@@ -69,57 +70,56 @@ class SettingController extends Controller
 
     public function delete(Request $request)
     {
-        try{
-            Setting::whereIn('id',$request->id)->delete();
+        try {
+            Setting::whereIn('id', $request->id)->delete();
         } catch (\Exception $e) {
-            return response()->json(['message'=>'Failed']);
+            return response()->json(['message' => 'Failed']);
         }
-        return response()->json(['message'=>'Success']);
+        return response()->json(['message' => 'Success']);
     }
 
 
     public function edit(Request $request)
     {
-        $Setting=Setting::find($request->id);
-        return view('Admin.Setting.model',compact('Setting'));
+        $Setting = Setting::find($request->id);
+        return view('Admin.Setting.model', compact('Setting'));
     }
 
 
     public function update(Request $request)
     {
 
-        $this->validate(request(),[
+        $this->validate(request(), [
 
         ]);
+//dd($request->all());
 
-
-        $Setting= Setting::find($request->id);
+        $Setting = Setting::find($request->id);
 
         $Setting->ar_company_name = $request->ar_company_name;
         $Setting->en_company_name = $request->en_company_name;
-        $Setting->ministry_name=$request->ministry_name;
-        $Setting->directorate_name=$request->directorate_name;
-        $Setting->date_type=$request->date_type;
-        $Setting->it_name=$request->it_name;
-        $Setting->holiday_count_yearly=$request->holiday_count_yearly;
-        $Setting->holiday_count_seasonal=$request->holiday_count_seasonal;
-
-        if($file1=$request->file('logo')){
-            $name='img' .time() . '.' .$file1->getClientOriginalExtension();
-            $file1->move('Upload', $name);
-            $Setting->logo=$name;
+        $Setting->ministry_name = $request->ministry_name;
+        $Setting->directorate_name = $request->directorate_name;
+        $Setting->date_type = $request->date_type;
+        $Setting->it_name = $request->it_name;
+        $Setting->holiday_count_yearly = $request->holiday_count_yearly;
+        $Setting->holiday_count_seasonal = $request->holiday_count_seasonal;
+        if ($file1 = $request->file('logo')) {
+            $logo_image_name = 'img_logo_' . time() . uniqid() . '.' . $file1->getClientOriginalExtension();
+            $file1->move('Upload', $logo_image_name);
+            $Setting->logo = $logo_image_name;
         }
 
-        if($file2=$request->file('seal')){
-            $name='img' .time() . '.' .$file2->getClientOriginalExtension();
-            $file2->move('Upload', $name);
-            $Setting->company_seal=$name;
+        if ($file2 = $request->file('seal')) {
+            $seal_image_name = 'img_seal_' . time() . uniqid() . '.' . $file2->getClientOriginalExtension();
+            $file2->move('Upload', $seal_image_name);
+            $Setting->company_seal = $seal_image_name;
         }
 
-        if($file3=$request->file('signature')){
-            $name='img' .time() . '.' .$file3->getClientOriginalExtension();
-            $file3->move('Upload', $name);
-            $Setting->signature=$name;
+        if ($file3 = $request->file('signature')) {
+            $signature_image_name = 'img_signature_' . time() . uniqid() . '.' . $file3->getClientOriginalExtension();
+            $file3->move('Upload', $signature_image_name);
+            $Setting->signature = $signature_image_name;
         }
 
         try {
@@ -131,7 +131,8 @@ class SettingController extends Controller
         return redirect()->back()->with('message', 'Success');
     }
 
-    public function logout(){
+    public function logout()
+    {
 
         Auth::logout();
 
