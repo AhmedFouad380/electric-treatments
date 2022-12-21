@@ -122,7 +122,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('lang.Categories_Close')}}</button>
+                            <a href="{{url('resources/Categories')}}" type="button" class="btn btn-secondary" data-dismiss="modal">{{__('lang.Categories_Close')}}</a>
                             <button type="submit" class="btn btn-primary">{{__('lang.Categories_Save')}}</button>
                         </div>
                     </form>

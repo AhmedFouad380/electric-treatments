@@ -296,6 +296,7 @@
 
     <?php
     $message=session()->get("message");
+    $message2=session()->get("error_message");
     ?>
 
 
@@ -325,5 +326,21 @@
             </script>
         @endif
     @endif
+    @if( session()->has("error_message"))
+        @if( $message2 )
+
+            <script>
+                Swal.fire({
+                    icon: 'warning',
+                    title: "{{__('lang.Sorry')}}",
+                    text: "{{$message2}}",
+                    type:"error" ,
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            </script>
+        @endif
+    @endif
+
 @endsection
 @endsection

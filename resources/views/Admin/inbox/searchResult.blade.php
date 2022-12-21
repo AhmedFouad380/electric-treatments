@@ -312,7 +312,7 @@
                                         <td> @if($user->find($inbox->reciver_id)) {{$user->find($inbox->reciver_id)->name}}  @else   تم حضف الموظف @endif </td>
                                         <td>{{$inbox->created_at}}</td>
                                         <td nowrap="nowrap">
-                                            <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/inbox_details/{{$inbox->id}}" data-original-title="Edit" title="View">
+                                            <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/inbox_details/{{$inbox->id}}" data-original-title="Edit" title="View">
                                                 <i class="flaticon-eye icon-nm"></i>
                                             </a>
                                         </td>

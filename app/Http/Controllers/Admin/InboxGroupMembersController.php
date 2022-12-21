@@ -50,6 +50,10 @@ class InboxGroupMembersController extends Controller
             'user_id' => 'required',
         ]);
 
+        if(InboxGroupMembers::where('group_id',$request->group_id)->where('user_id',$request->user_id)->count() >0){
+            return redirect()->back()->with('error_message', 'لا يمكن تكرار العضو في  نفس المجموعة ');
+
+        }
         $data = new InboxGroupMembers;
         $data->user_id = $request->user_id;
         $data->group_id = $request->group_id;
