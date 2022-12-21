@@ -948,10 +948,6 @@
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
 
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                           href="#kt_tab_pane_11_3">{{__('lang.Day')}}</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -1069,10 +1065,6 @@
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
 
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                           href="#kt_tab_pane_11_3"></a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -1160,8 +1152,6 @@
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
 
                                     <li class="nav-item">
-                                        <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                           href="#kt_tab_pane_11_3"></a>
                                     </li>
                                 </ul>
                             </div>

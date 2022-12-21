@@ -94,7 +94,7 @@ class InboxController extends Controller
                $actions='<a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/Outbound_details/'.$row->id.'" data-original-title="Edit" title="View">
                                                 <i class="flaticon-eye icon-nm"></i>
                                             </a>';
-                }elseif($row->type == 0){
+                }else{
                $actions = ' <a  class="btn btn-icon btn-success btn-sm btn-clean btn-icon btn-icon-md edit-Advert"  href="/transactions/inbox_details/'.$row->id.'" data-original-title="Edit" title="View">
                                                 <i class="flaticon-eye icon-nm"></i>
                                             </a>';

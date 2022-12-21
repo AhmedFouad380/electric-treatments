@@ -704,7 +704,7 @@
                             </div>
                             <div class="navi-text">
                                 <div class="font-weight-bold">{{trans('lang.profile')}}</div>
-                                <div class="text-muted">{{trans('lang.profile_desc')}}
+                                <div class="text-muted">
                                     {{--								<span class="label label-light-danger label-inline font-weight-bold"></span>--}}
                                 </div>
                             </div>
