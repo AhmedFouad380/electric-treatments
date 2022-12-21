@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function Mainjob()
     {
-        return $this->belongsTo('App\job', 'mainJob_id');
+        return $this->belongsTo('App\Job', 'mainJob_id');
     }
 
     public function Bonuses()
@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function subjob()
     {
-        return $this->hasOne('App\job', 'subJob_id');
+        return $this->hasOne('App\Job', 'subJob_id');
     }
 
     public function Bank()
