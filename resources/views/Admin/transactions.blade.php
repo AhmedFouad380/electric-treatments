@@ -190,7 +190,7 @@
         @endif
         @if($UserRole->find(Auth::user()->role)->transactions_report ==1 )
 
-  <div class="col-lg-6 col-xl-4 mb-5">
+  {{--<div class="col-lg-6 col-xl-4 mb-5">
     <div class="card card-custom mb-8 mb-lg-0">
       <div class="card-body">
       <div class="d-flex align-items-center p-5">
@@ -208,13 +208,14 @@
         <div class="d-flex flex-column">
           <a class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3" href="/transactions/Logs">{{__('lang.Transactionsmreports')}}</a>
           <div class="text-dark-75">
-{{--              {{__('lang.Transactionsmreports')}}--}}
+              {{__('lang.Transactionsmreports')}}
           </div>
         </div>
       </div>
       </div>
     </div>
   </div>
+            --}}
         @endif
 
         @if($UserRole->find(Auth::user()->role)->transactions_archive ==1 )

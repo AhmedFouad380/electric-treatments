@@ -10,7 +10,7 @@ class Inbox extends Model
 //    protected $appends = ['hijri_date'];
 
 
-    public function getHijriDateAtt($value){
+    public function getHijriDate($value){
         $date = \GeniusTS\HijriDate\Hijri::convertToHijri($value);
         return $date;
     }

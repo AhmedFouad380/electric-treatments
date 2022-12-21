@@ -99,6 +99,6 @@ class NationalityController extends Controller
         } catch (Exception $e) {
             return redirect('/users')->with('error_message', 'هناك خطأ ما فى عملية الاضافة');
         }
-        return redirect()->back()->with('message', 'Success');
+        return redirect('/settings/Nationality')->with('message', 'Success');
     }
 }

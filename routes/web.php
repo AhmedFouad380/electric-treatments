@@ -177,7 +177,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('/settings/Banks', 'Admin\BankController@index');
     Route::post('/Store_Bank', 'Admin\BankController@store');
     Route::post('/Update_Bank', 'Admin\BankController@update');
-    Route::get('/Delete_Bank', 'Admin\BankController@delete');
+    Route::get('/Delete_Banks', 'Admin\BankController@delete');
     Route::get('/copanel/Banks-datatable', 'Admin\BankController@datatable')->name('BanksDatatable');
     Route::get('/Edit_Banks/{id}', 'Admin\BankController@edit');
     Route::get('/buttons_Banks', function () {

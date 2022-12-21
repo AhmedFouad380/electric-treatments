@@ -311,8 +311,8 @@
                         <label>{{__('lang.sender')}} :</label>
                         <select class="form-control select form-control-lg"  id="kt_select2_1" name="third_party_id" required>
                           @inject('inboxThirdParty','App\inboxThirdParty')
-                          @foreach($inboxThirdParty->all() as $data)
-                        <option value="{{$data->id}}">{{$data->name}} </option>
+                          @foreach($inboxThirdParty->all() as $data1)
+                        <option value="{{$data1->id}}">{{$data1->name}} </option>
                           @endforeach
                       </select>
                     </div>
@@ -322,8 +322,8 @@
                       <label>{{__('lang.consignee')}} :</label>
                       <select class=" form-control form-control-lg "  id="kt_select2_1" name="assignee_id" required>
                         @inject('User','App\User')
-                        @foreach($User->all() as $data)
-                            <option value="{{$data->id}}">{{$data->name}} </option>
+                        @foreach($User->all() as $data2)
+                            <option value="{{$data2->id}}">{{$data2->name}} </option>
                         @endforeach
                     </select>
 {{--                    <span class="form-text text-muted text-center">موظف عام</span>--}}
@@ -332,8 +332,8 @@
                   <div class="form-group">
                       <label>{{__('lang.Assignee')}} :</label>
                       <select class="form-control form-control-lg"  id="kt_select2_1" name="reciver_id" required>
-                        @foreach($User->all() as $data)
-                            <option value="{{$data->id}}">{{$data->name}} </option>
+                        @foreach($User->all() as $data2)
+                            <option value="{{$data2->id}}">{{$data2->name}} </option>
                         @endforeach
                     </select>
                   </div>
@@ -371,7 +371,7 @@
 
                       <select class="form-control form-control-lg"  id="kt_select2_1" name="type_id" required>
                         @inject('inboxType','App\inboxType')
-                        @foreach($inboxType->all() as $data)
+                        @foreach($inboxType->all() as $data2)
                             <option value="{{$data->id}}"> @if(Request::segment(1) == 'ar') {{$data->ar_name}} @else {{$data->en_name}} @endif </option>
                         @endforeach                    </select>
                   </div>
@@ -430,7 +430,7 @@ $message=session()->get("message");
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn btn-primary font-weight-bold" onclick="window.print();">Print Order Details</button>
+                <button type="button" class="btn btn-primary font-weight-bold" onclick="window.print();">@if(Request::segment(1) == 'ar')  طباعة @else print @endif</button>
             </div>
             <div class="modal-body">
                 <div class="card card-custom gutter-b">

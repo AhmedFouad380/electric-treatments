@@ -510,7 +510,7 @@
                                                          data-height="300" data-mobile-height="200">
 
                                                         @inject('Log','App\Log')
-                                                        @foreach($Log->where('user_id',Auth::user()->id)->where('description','like','%'.'بتسجيل الدخول'.'%')->limit(10)->get() as $data)
+                                                        @foreach($Log->Orderby('id','desc')->where('user_id',Auth::user()->id)->where('description','like','%'.'بتسجيل الدخول'.'%')->limit(10)->get() as $data)
                                                             <a href="#" class="navi-item">
                                                                 <div class="navi-link">
                                                                     <div class="navi-text">
