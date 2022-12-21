@@ -149,13 +149,12 @@ class AskPermissionController extends Controller
             } else {
 
                 $category_id = Job::whereId(1)->first();
-                if(isset($category_id)){
-                $jobs = Job::where('category_id', $category_id->category_id)->where('job_role', 1)->first();
-                $manager_id = User::where('mainJob_id', $jobs->id)->first();
-                    if(isset($category_id)){
+                if(isset($category_id)) {
+                    $jobs = Job::where('category_id', $category_id->category_id)->where('job_role', 1)->first();
+                    $manager_id = User::where('mainJob_id', $jobs->id)->first();
+                }
 
-
-                    }
+            }
         } else {
             $category_id = Job::whereId(1)->first();
             $jobs = Job::where('category_id', $category_id->category_id)->where('job_role', 1)->first();
