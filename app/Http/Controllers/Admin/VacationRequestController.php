@@ -148,13 +148,17 @@ class VacationRequestController extends Controller
                 }
             } else {
 
-                $category_id = Job::whereId(105)->first();
+                $category_id = Job::first();
                 $jobs = Job::where('category_id', $category_id->category_id)->where('job_role', 1)->first();
-                $manager_id = User::where('mainJob_id', $jobs->id)->first();
+                if(isset($jobs)){
+                    $manager_id = User::where('mainJob_id', $jobs->id)->first();
+                }else{
+                    return back()->with('error','لم يتم اضافة مدير لقسم الموارد البشرية ');
+                }
 
             }
         } else {
-            $category_id = Job::whereId(105)->first();
+            $category_id = Job::first();
             $jobs = Job::where('category_id', $category_id->category_id)->where('job_role', 1)->first();
             if(isset($jobs)){
                 $manager_id = User::where('mainJob_id', $jobs->id)->first();
